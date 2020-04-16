@@ -4,22 +4,21 @@ Created on Thu Mar 26 20:10:49 2020
 
 @author: PC
 """
-import tkinter as tk 
-from tkinter import simpledialog
 import sys
 import numpy as np
 
 
 def readFile():
     # read file 
-    inputFileName=None
+    inputFileName="test.txt"
     inputArr = []
     
-    
+    '''
     window = tk.Tk()
     window.withdraw()
     inputFileName = simpledialog.askstring(title="input file",prompt="Enter the input file name") 
     window.destroy()
+    '''
     
     try:       
         inputFile = open(inputFileName, "r")

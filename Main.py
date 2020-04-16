@@ -7,20 +7,15 @@ Created on Thu Mar 26 19:57:52 2020
 import numpy as np
 from ReadFile_Fun import readFile
 from initializeLevels_Fun import initializeLevels
-
+import matplotlib.pyplot as plt
 # read file 
 arrivalTimes,burstTimes,priorities,finishTimes,remainingTimes,numberOfProcesses=readFile()
 
 arrivalTimesCopy=np.copy(arrivalTimes)
 prioritiesCopy=np.copy(priorities)
 
-threads=initializeLevels(arrivalTimesCopy,burstTimes,prioritiesCopy,finishTimes,remainingTimes)
+finishTimes=initializeLevels(arrivalTimesCopy,burstTimes,prioritiesCopy,finishTimes,remainingTimes)
 
-for j in threads:
-    j.start()
-    
-for j in threads:
-    j.join()
     
 turnaroundTimes=finishTimes-arrivalTimes
 waitingTimes=turnaroundTimes-burstTimes
@@ -38,6 +33,11 @@ for i in range(numberOfProcesses):
 outputFile.write("Average Turnaround time = "+str(averageTurnaroundTime)+'\n')
 outputFile.write("Average Weighted turnaround time = "+str(averageWeightedTurnaroundTime)+'\n')
 outputFile.close()
+plt.title("ALG")   
+plt.xlabel('Time (s)')
+plt.ylabel('Process Id')
+plt.show()
+
 
 
 
